@@ -18,7 +18,7 @@ const useFirebase = () => {
                 setAuthError('');
                 
                 setUser({displayName:name,email})
-                // saveUser(email, name, 'POST');
+                saveUser(email, name, 'POST');
 
 
                 updateProfile(auth.currentUser, {
@@ -73,7 +73,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/users`, {
             method: method,
             headers: {
                 'content-type': 'application/json'

@@ -7,7 +7,6 @@ const MainRegisterForm = () => {
     const [regData, setRegData] = useState({});
     const { registerUser , isLoading} = useAuth()
 
-    const location = useLocation();
     const history = useHistory();
 
     const handleOnChange = e => {
