@@ -1,4 +1,5 @@
 import React from 'react';
+import useAuth from '../../../hooks/useAuth';
 import {
   Nav,
   NavLink,
@@ -7,8 +8,10 @@ import {
   NavBtn,
   NavBtnLink
 } from './NavbarElements';
+import { Button , Typography} from '@mui/material'
 
 const NewNavbar = () => {
+  const { user , logout} = useAuth()
   return (
     <>
       <Nav>
@@ -24,6 +27,9 @@ const NewNavbar = () => {
           <NavLink to='/purchase' activeStyle>
             Purchase
           </NavLink>
+          <NavLink to='/register' activeStyle>
+            Register
+          </NavLink>
           {/* <NavLink to='/contact-us' activeStyle>
             Contact Us
           </NavLink>
@@ -33,9 +39,17 @@ const NewNavbar = () => {
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-        <NavBtn>
-          <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-        </NavBtn>
+        {user?.email ?
+          <NavBtn>
+            <Typography sx={{color:'white'}}>Welcome, {user.displayName}</Typography>
+            <Button onClick={logout} variant="text">Log Out</Button>
+          </NavBtn>
+          :
+          <NavBtn>
+            <NavBtnLink to='/login'>Log In</NavBtnLink>
+          </NavBtn>
+        }
+
       </Nav>
     </>
   );

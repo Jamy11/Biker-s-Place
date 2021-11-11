@@ -7,26 +7,34 @@ import {
 } from "react-router-dom";
 import Home from './pages/public/Home';
 import Login from './pages/public/Login';
+import AuthProvider from './context/AuthProvider';
+import Register from './pages/public/Register';
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Switch>
+      <AuthProvider>
+        <Router>
+          <Switch>
 
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/signin">
-            <Login />
-          </Route>
-          <Route path="/users">
-            {/* <Users /> */}
-          </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/users">
+              {/* <Users /> */}
+            </Route>
 
-        </Switch>
+          </Switch>
 
-      </Router>
+        </Router>
+      </AuthProvider>
+
     </div>
   );
 }
