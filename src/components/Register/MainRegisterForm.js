@@ -1,29 +1,40 @@
 import React, { useState } from 'react'
 import useAuth from '../../hooks/useAuth'
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { CircularProgress } from '@mui/material'
 
 const MainRegisterForm = () => {
-    const [regnData, setRegData] = useState({});
-    const { registerUser } = useAuth()
+    const [regData, setRegData] = useState({});
+    const { registerUser , isLoading} = useAuth()
 
     const location = useLocation();
     const history = useHistory();
 
     const handleOnChange = e => {
 
-        setRegData({ ...regnData, [e.target.name]: e.target.value });
+        setRegData({ ...regData, [e.target.name]: e.target.value });
     }
     const handelSubmint = (e) => {
         e.preventDefault();
-        registerUser(regnData.email, regnData.password, regnData.name, history);
+        if(regData.password.lenght<6){
+            alert('Password must be 6')
+            return
+        }
+        registerUser(regData.email, regData.password, regData.name, history);
     }
-    console.log(regnData)
+    if (isLoading) {
+        return (
+            <CircularProgress />
+
+        )
+    }
+
     return (
         <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        Sign Up to your account
+                        Register your account
                     </h2>
                 </div>
                 <form className="mt-8 space-y-6" onSubmit={handelSubmint}>
