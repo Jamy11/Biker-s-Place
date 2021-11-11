@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Bali",
+        "description":  "Although the grounds are vast enough to feature a helipad, the rooms seem huddled together. But they are spacious, with likable traditional touches and views of the gardens (not sea) from sizable balconies/patios.",
+        "image":"https://www.traveldailymedia.com/assets/2020/07/bali.jpg",
+        "cost": 4000
+    },
+    {
+        "name": "Phuket",
+        "description":  "Phuket is Thailand's largest island, and arguably the most famous. Blue waters, sandy beaches, spicy Thai cuisine, and excellent snorkeling and diving are all part of the appeal.",
+        "image":"https://media-cdn.tripadvisor.com/media/photo-m/1280/1b/4b/5d/c8/caption.jpg",
+        "cost": 4000
+
+    },
+    {
+        "name": "Cox Bazar",
+        "description":  "Cox's Bazar (/ˌkɒksɪz bəˈzɑː/; Bengali: কক্সবাজার, romanized: Kaksabājāra; pronounced [kɔksbadʒaɾ]) is a city, fishing port, tourism centre, and district headquarters in southeastern Bangladesh.",
+        "image":"https://upload.wikimedia.org/wikipedia/commons/2/21/Cox%27s_Bazar_Sunset.JPG",
+        "cost": 4000
+
+        
+    },
+    {
+        "name": "Maldeev",
+        "description":  "In the past few months, the Maldives has become a favourite holiday destination not just amongst Bollywood celebrities but for many travel lovers. The island country in the Indian ocean welcomed the tourists with open arms and they lured",
+        "image":"https://static.india.com/wp-content/uploads/2020/06/Maldives1.jpg",
+        "cost": 2000
+
+    },
+    {
+        "name": "Paris",
+        "description":  "Paris, the city that was born on the banks of the Seine, grew from a small island – Île de la Cité – to the vast metropolis that nowadays extends beyond Ménilmontant, the vingtième arrondissement.",
+        "image":"https://upload.wikimedia.org/wikipedia/commons/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg",
+        "cost": 2000
+
+    },
+    {
+        "name": "Hawaii",
+        "description":  "Visitors who aren't fully vaccinated still must provide a negative result from a Covid-19 test taken 72 hours or less before the final leg of their trip to enter and bypass a mandatory 10-day quarantine.",
+        "image":"http://cdn.cnn.com/cnnnext/dam/assets/201230100452-10-2021-travel-destinations-hawaii.jpg",
+        "cost": 5000
+
+    },
+    {
+        "name": "Resort",
+        "description":  "LUXURY BEACHFRONT RESORT ON VIETNAM'S TROPICAL PHU QUOC ISLAND",
+        "image":"https://digital.ihg.com/is/image/ihg/intercontinental-phu-quoc-5630347934-2x1",
+        "cost": 8000
+
+    }
+]

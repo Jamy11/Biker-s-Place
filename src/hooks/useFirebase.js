@@ -1,0 +1,93 @@
+import { useState, useEffect } from 'react';
+import initializeFirebase from '../Firebase/firebase.init'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut ,
+    getIdToken, updateProfile } from "firebase/auth";
+
+initializeFirebase()
+const useFirebase = () => {
+    const [user, setUser] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+
+    const auth = getAuth();
+
+    const registerUser = (email, password , name , history) => {
+        setIsLoading(true);
+        createUserWithEmailAndPassword(auth, email, password , name)
+            .then((userCredential) => {
+                setAuthError('');
+                
+                setUser({displayName:name,email})
+                // saveUser(email, name, 'POST');
+
+
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                }).catch((error) => {
+                });
+                history.replace('/')
+            })
+            .catch((error) => {
+                setAuthError(error.message);
+                console.log(error);
+            })
+            .finally(() => setIsLoading(false));
+    }
+
+    const loginUser = (email, password, location, history) => {
+        setIsLoading(true);
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+                setAuthError('');
+            })
+            .catch((error) => {
+                setAuthError(error.message);
+            })
+            .finally(() => setIsLoading(false));
+    }
+
+    useEffect(() => {
+        const unsubscribed = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser({})
+            }
+            setIsLoading(false);
+        });
+        return () => unsubscribed;
+    }, [])
+
+    const logout = () => {
+        setIsLoading(true);
+        signOut(auth).then(() => {
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        })
+            .finally(() => setIsLoading(false));
+    }
+
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+    return {
+        user,
+        isLoading,
+        registerUser,
+        loginUser,
+        logout,
+    }
+}
+
+export default useFirebase
