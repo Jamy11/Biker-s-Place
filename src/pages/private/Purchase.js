@@ -1,9 +1,10 @@
 import React from 'react'
+import NewNavbar from '../../components/shared/NavBar/NewNavbar'
 
 const Purchase = () => {
     return (
         <div>
-            Purchase
+            <NewNavbar />
         </div>
     )
 }

@@ -15,7 +15,7 @@ const NewNavbar = () => {
   return (
     <>
       <Nav>
-        <NavLink to='/'>
+        <NavLink to='/' style={{color:'white'}}>
           {/* <img src={require('../../images/logo.svg')} alt='logo' /> */}
           Biker's Place
         </NavLink>

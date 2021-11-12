@@ -12,6 +12,7 @@ import Register from './pages/public/Register';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Dashboard from './pages/private/Dashboard';
 import Purchase from './pages/private/Purchase';
+import Explore from './pages/public/Explore';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register />
+            </Route>
+            <Route path="/explore">
+              <Explore />
             </Route>
             <PrivateRoute path="/dashboard">
               <Dashboard />
