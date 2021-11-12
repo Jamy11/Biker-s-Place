@@ -8,10 +8,10 @@ import {
   NavBtn,
   NavBtnLink
 } from './NavbarElements';
-import { Button , Typography} from '@mui/material'
+import { Button, Typography } from '@mui/material'
 
 const NewNavbar = () => {
-  const { user , logout} = useAuth()
+  const { user, logout } = useAuth()
   return (
     <>
       <Nav>
@@ -27,21 +27,16 @@ const NewNavbar = () => {
           <NavLink to='/purchase' activeStyle>
             Purchase
           </NavLink>
-          <NavLink to='/register' activeStyle>
-            Register
-          </NavLink>
-          {/* <NavLink to='/contact-us' activeStyle>
-            Contact Us
-          </NavLink>
-          <NavLink to='/sign-up' activeStyle>
-            Sign Up
-          </NavLink> */}
-          {/* Second Nav */}
-          {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+          {user?.email &&
+            <NavLink to='/dashboard' activeStyle>
+              Dashboard
+            </NavLink>
+          }
         </NavMenu>
+        
         {user?.email ?
           <NavBtn>
-            <Typography sx={{color:'white'}}>Welcome, {user.displayName}</Typography>
+            <Typography sx={{ color: 'white' }}>Welcome, {user.displayName}</Typography>
             <Button onClick={logout} variant="text">Log Out</Button>
           </NavBtn>
           :
