@@ -7,7 +7,7 @@ const useBikeCollection = () => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/bike-collection/`)
         .then(res =>res.json())
         .then(result => setBikeCollection(result))
-    }, [])
+    }, [bikeCollection])
 
     return {
         bikeCollection,

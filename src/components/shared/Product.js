@@ -6,21 +6,23 @@ import ReactStars from "react-rating-stars-component";
 import useAuth from '../../hooks/useAuth';
 import { notify } from '../../helper/helperToast';
 import { ToastContainer } from 'react-toastify';
+import axios from 'axios';
 
-const Product = ({ product, buyNow }) => {
+const Product = ({ product, buyNow , deleteNow}) => {
 
-    const { name, price, image, description, _id, rating } = product
+    const { name, price, image, description, _id, rating  } = product
     const location = useLocation()
     const history = useHistory()
-    const { user } = useAuth()
+    const { user, admin } = useAuth()
+
+
     const ratingChanged = (newRating) => {
         if (!user.email) {
             history.push('/login')
-            return 
+            return
         }
         product.rating = newRating
-        console.log(product)
-      
+
         fetch(`${process.env.REACT_APP_BACKEND_URL}/bike-collection/`, {
             method: 'PUT',
             headers: {
@@ -38,8 +40,11 @@ const Product = ({ product, buyNow }) => {
 
     };
 
+
+
     return (
-        <><ToastContainer />
+        <>
+        <ToastContainer />
             <Grid item xs={12} sm={6} md={4}>
                 <Card sx={{ minWidth: 275, boxShadow: 0, border: 0 }}>
                     <CardMedia
@@ -68,10 +73,17 @@ const Product = ({ product, buyNow }) => {
                                 activeColor="#ffd700"
                             />
                         </Box>
-                        <Box sx={{ textAlign: 'center' }} className={location.pathname === '/dashboard/review' && 'hidden'}>
+                        <Box sx={{ textAlign: 'center' }} className={
+                            (location.pathname === '/dashboard/review') || (location.pathname === '/dashboard/manage-products') && 'hidden'}>
                             <Button onClick={() => buyNow(_id)} variant="contained" sx={{ background: 'black', mt: 3 }} >Buy Now</Button>
                         </Box>
 
+
+                        {location.pathname === '/dashboard/manage-products' &&
+                            <Box sx={{ textAlign: 'center' }} >
+                                <Button onClick={() => deleteNow(_id)} variant="contained" sx={{ background: 'black', mt: 3 }} >Delete</Button>
+                            </Box>
+                        }
 
 
                     </CardContent>

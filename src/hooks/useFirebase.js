@@ -63,6 +63,12 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
     const logout = () => {
         setIsLoading(true);
         signOut(auth).then(() => {
@@ -92,7 +98,8 @@ const useFirebase = () => {
         loginUser,
         logout,
         status, 
-        setStatus
+        setStatus,
+        admin
     }
 }
 

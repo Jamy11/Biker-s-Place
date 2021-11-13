@@ -13,7 +13,7 @@ import { notify } from '../../helper/helperToast';
 const Home = () => {
 
     const { bikeCollection } = useBikeCollection()
-    const newbikeCollection = bikeCollection.slice(5)
+    const newbikeCollection = bikeCollection.slice(0,6)
     const history = useHistory()
     const { status, setStatus } = useAuth()
 
