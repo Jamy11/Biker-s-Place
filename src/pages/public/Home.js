@@ -25,7 +25,6 @@ const Home = () => {
         if (status === 'Order Placed') {
             notify('Order Placed')
             setStatus('')
-
         }
     }
 

@@ -26,7 +26,8 @@ import DashboardHome from './DashboardHome';
 import Pay from './Pay';
 import MyOrders from './MyOrders';
 import Review from './Review';
-import ManageOrders from '../adminprivate/ManageProducts';
+import ManageProducts from '../adminprivate/ManageProducts';
+import ManageOrders from '../adminprivate/ManageOrders';
 import AdminRoute from '../../AdminRoute/AdminRoute';
 import AddProduct from '../adminprivate/AddProduct';
 import MakeAdmin from '../adminprivate/MakeAdmin';
@@ -59,7 +60,7 @@ const Dashboard = (props) => {
                         <Link to={`${url}/manage-products`}><Button color="inherit">Manage All Products</Button></Link><br />
                         <Link to={`${url}/add-product`}><Button color="inherit">Add A Product</Button></Link><br />
                         <Link to={`${url}/make-admin`}><Button color="inherit">Make Admin</Button></Link><br />
-                        <Link to={`${url}/review`}><Button color="inherit">Manage All Products</Button></Link><br />
+                        <Link to={`${url}/manage-orders`}><Button color="inherit">Manage All Orders</Button></Link><br />
                         <Button onClick={logout} color="inherit">Log Out</Button>
                     </Box>
                     :
@@ -71,18 +72,6 @@ const Dashboard = (props) => {
                     </Box>
 
             }
-
-
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
@@ -171,7 +160,7 @@ const Dashboard = (props) => {
 
 
                     <AdminRoute exact path={`${path}/manage-products`}>
-                        <ManageOrders user={user} />
+                        <ManageProducts user={user} />
                     </AdminRoute>
                     
                     <AdminRoute exact path={`${path}/add-product`}>
@@ -179,6 +168,9 @@ const Dashboard = (props) => {
                     </AdminRoute>
                     <AdminRoute exact path={`${path}/make-admin`}>
                         <MakeAdmin />
+                    </AdminRoute>
+                    <AdminRoute exact path={`${path}/manage-orders`}>
+                        <ManageOrders user={user} />
                     </AdminRoute>
 
                 </Switch>

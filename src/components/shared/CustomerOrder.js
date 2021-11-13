@@ -1,8 +1,9 @@
 import { Button } from '@mui/material'
 import React from 'react'
+import { useLocation } from 'react-router'
 
-const CustomerOrder = ({ order , deleteOrder }) => {
-
+const CustomerOrder = ({ order, deleteOrder }) => {
+    const location = useLocation()
     return (
         <div>
             <div className="flex flex-col justify-start items-start bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
@@ -33,12 +34,18 @@ const CustomerOrder = ({ order , deleteOrder }) => {
                         <div className="flex justify-between space-x-8 items-start w-full">
                             <p className="text-base xl:text-lg leading-6 text-gray-800">01</p>
                             <p className="text-base xl:text-lg font-semibold leading-6 text-gray-800">{order.price} Taka</p>
+                            {location.pathname === '/dashboard/manage-orders' &&
+                                <p className="text-base x:text-lg font-semibold leading-6 text-gray-800">Ordered By: {order.email}</p>
+                            }
                         </div>
                     </div>
                 </div>
-                <button onClick={()=>deleteOrder(order._id)} class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                    Delete
-                </button>
+                {location.pathname !== '/dashboard/manage-orders' &&
+                    <button onClick={() => deleteOrder(order._id)} class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                        Delete
+                    </button>
+                }
+
 
             </div>
         </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { ToastContainer } from 'react-toastify'
-import axios from 'axios';
-import { failed, notify } from '../../helper/helperToast';
+import {  notify } from '../../helper/helperToast';
 import { useForm } from "react-hook-form";
 
 const MakeAdmin = () => {
