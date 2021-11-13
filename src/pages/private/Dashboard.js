@@ -29,6 +29,7 @@ import Review from './Review';
 import ManageOrders from '../adminprivate/ManageProducts';
 import AdminRoute from '../../AdminRoute/AdminRoute';
 import AddProduct from '../adminprivate/AddProduct';
+import MakeAdmin from '../adminprivate/MakeAdmin';
 
 
 
@@ -57,7 +58,7 @@ const Dashboard = (props) => {
                     <Box>
                         <Link to={`${url}/manage-products`}><Button color="inherit">Manage All Products</Button></Link><br />
                         <Link to={`${url}/add-product`}><Button color="inherit">Add A Product</Button></Link><br />
-                        <Link to={`${url}/review`}><Button color="inherit">Make Admin</Button></Link><br />
+                        <Link to={`${url}/make-admin`}><Button color="inherit">Make Admin</Button></Link><br />
                         <Link to={`${url}/review`}><Button color="inherit">Manage All Products</Button></Link><br />
                         <Button onClick={logout} color="inherit">Log Out</Button>
                     </Box>
@@ -175,6 +176,9 @@ const Dashboard = (props) => {
                     
                     <AdminRoute exact path={`${path}/add-product`}>
                         <AddProduct />
+                    </AdminRoute>
+                    <AdminRoute exact path={`${path}/make-admin`}>
+                        <MakeAdmin />
                     </AdminRoute>
 
                 </Switch>
