@@ -1,5 +1,6 @@
 import React from 'react'
 import MainRegisterForm from '../../components/Register/MainRegisterForm'
+import Footer from '../../components/shared/Footer'
 import NewNavbar from '../../components/shared/NavBar/NewNavbar'
 
 const Register = () => {
@@ -7,6 +8,7 @@ const Register = () => {
         <div>
             <NewNavbar />
             <MainRegisterForm />
+            <Footer />
         </div>
     )
 }

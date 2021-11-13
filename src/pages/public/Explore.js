@@ -1,6 +1,7 @@
 import { Container, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { useHistory } from 'react-router'
+import Footer from '../../components/shared/Footer'
 import NewNavbar from '../../components/shared/NavBar/NewNavbar'
 import Product from '../../components/shared/Product'
 import useBikeCollection from '../../hooks/useBikeCollection'
@@ -28,6 +29,7 @@ const Explore = () => {
                     }
                 </Grid>
             </Container>
+            <Footer />
         </div>
     )
 }

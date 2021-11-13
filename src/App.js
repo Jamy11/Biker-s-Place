@@ -14,6 +14,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Dashboard from './pages/private/Dashboard';
 import Purchase from './pages/private/Purchase';
 import Explore from './pages/public/Explore';
+import ErrorPage from './pages/public/ErrorPage';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
               <Purchase />
             </PrivateRoute>
 
+            <Route path='/*' component={ErrorPage} />
           </Switch>
 
         </Router>

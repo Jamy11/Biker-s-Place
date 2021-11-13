@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NewNavbar from '../../components/shared/NavBar/NewNavbar';
 import ImageSlider from '../../components/Home/Carousel/ImageSlider'
 import { SliderData } from '../../components/Home/Carousel/SliderData'
@@ -9,6 +9,9 @@ import { useHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
 import { notify } from '../../helper/helperToast';
+import Footer from '../../components/shared/Footer';
+import Stat from '../../components/shared/Stat';
+import AboutUs from '../../components/shared/AboutUs';
 
 const Home = () => {
 
@@ -21,12 +24,15 @@ const Home = () => {
         history.push(`/purchase/${id}`)
     }
 
-    if (status) {
-        if (status === 'Order Placed') {
-            notify('Order Placed')
-            setStatus('')
+    useEffect(()=>{
+        if (status) {
+            if (status === 'Order Placed') {
+                notify('Order Placed')
+                setStatus('')
+            }
         }
-    }
+    },[status])
+    
 
     return (
         <div>
@@ -47,6 +53,9 @@ const Home = () => {
                 </Grid>
             </Container>
             <ToastContainer />
+            <Stat />
+            <AboutUs />
+            <Footer />
         </div>
     )
 }
