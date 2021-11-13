@@ -21,6 +21,10 @@ import {
     Link,
     useRouteMatch
 } from "react-router-dom";
+import useAuth from '../../hooks/useAuth'
+import DashboardHome from './DashboardHome';
+import Pay from './Pay';
+import MyOrders from './MyOrders';
 
 
 const drawerWidth = 200;
@@ -30,6 +34,7 @@ const Dashboard = (props) => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     let { path, url } = useRouteMatch();
+    const {logout , user} = useAuth();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -44,10 +49,10 @@ const Dashboard = (props) => {
             {
             // admin && 
             <Box>
-                <Link to={`${url}/makeadmin`}><Button color="inherit">Pay</Button></Link><br />
-                <Link to={`${url}/makeadmin`}><Button color="inherit">My Orders</Button></Link><br />
+                <Link to={`${url}/pay`}><Button color="inherit">Pay</Button></Link><br />
+                <Link to={`${url}/my-orders`}><Button color="inherit">My Orders</Button></Link><br />
                 <Link to={`${url}/makeadmin`}><Button color="inherit">Review</Button></Link><br />
-                <Button color="inherit">Log Out</Button>
+                <Button onClick={logout} color="inherit">Log Out</Button>
             </Box>}
 
             <List>
@@ -70,6 +75,7 @@ const Dashboard = (props) => {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
+
             <AppBar
                 position="fixed"
                 sx={{
@@ -77,7 +83,9 @@ const Dashboard = (props) => {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
+
                 <Toolbar>
+
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -88,7 +96,7 @@ const Dashboard = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                        Biker's Place
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -132,13 +140,13 @@ const Dashboard = (props) => {
 
                 <Switch>
                     <Route exact path={path}>
-                        {/* <DashBoardHome /> */}hi
+                        <DashboardHome />
                     </Route>
-                    <Route exact path={`${path}/makeadmin`}>
-                        {/* <MakeAdmin></MakeAdmin> */}bye
+                    <Route exact path={`${path}/pay`}>
+                            <Pay />
                     </Route>
-                    <Route exact path={`${path}/adddoctor`}>
-                        {/* <MakeAdmin></MakeAdmin> */}
+                    <Route exact path={`${path}/my-orders`}>
+                        <MyOrders user={user}/>
                     </Route>
 
                 </Switch>
