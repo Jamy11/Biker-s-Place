@@ -28,6 +28,7 @@ import MyOrders from './MyOrders';
 import Review from './Review';
 import ManageOrders from '../adminprivate/ManageProducts';
 import AdminRoute from '../../AdminRoute/AdminRoute';
+import AddProduct from '../adminprivate/AddProduct';
 
 
 
@@ -172,9 +173,8 @@ const Dashboard = (props) => {
                         <ManageOrders user={user} />
                     </AdminRoute>
                     
-                    <AdminRoute exact path={`${path}/manage-orders`}>
-                        {/* <ManageOrders user={user} /> */}
-                        hello
+                    <AdminRoute exact path={`${path}/add-product`}>
+                        <AddProduct />
                     </AdminRoute>
 
                 </Switch>
