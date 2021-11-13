@@ -2,9 +2,10 @@ import { Button, Card, CardContent, CardMedia, Grid, Paper, Typography } from '@
 import { Box } from '@mui/system'
 import React from 'react'
 
-const Product = ({ product }) => {
+const Product = ({ product , buyNow}) => {
 
-    const { name, price, image, description } = product
+    const { name, price, image, description ,_id} = product
+
     return (
         <>
             <Grid item xs={12} sm={6} md={4}>
@@ -27,7 +28,7 @@ const Product = ({ product }) => {
                             {description}
                         </Typography>
                         <Box sx={{ textAlign: 'center' }}>
-                            <Button variant="contained" sx={{ background: 'black', mt: 3 }} >Buy Now</Button>
+                            <Button onClick={ () =>buyNow(_id)} variant="contained" sx={{ background: 'black', mt: 3 }} >Buy Now</Button>
                         </Box>
                     </CardContent>
 

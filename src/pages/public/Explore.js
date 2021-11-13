@@ -1,12 +1,17 @@
 import { Container, Grid, Typography } from '@mui/material'
 import React from 'react'
+import { useHistory } from 'react-router'
 import NewNavbar from '../../components/shared/NavBar/NewNavbar'
 import Product from '../../components/shared/Product'
 import useBikeCollection from '../../hooks/useBikeCollection'
 
 const Explore = () => {
     const { bikeCollection } = useBikeCollection()
+    const history = useHistory()
 
+    const buyNow = (id) =>{
+        history.push(`/purchase/${id}`)
+    }
     return (
         <div>
             <NewNavbar />
@@ -18,7 +23,7 @@ const Explore = () => {
                         bikeCollection.map(product => <Product
                             product={product}
                             key={product._id}
-
+                            buyNow={buyNow}
                         />)
                     }
                 </Grid>

@@ -1,4 +1,5 @@
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,7 +37,10 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
-            <PrivateRoute path="/purchase">
+            <PrivateRoute path="/purchase/:id">
+              <Purchase />
+            </PrivateRoute>
+            <PrivateRoute exact path="/purchase">
               <Purchase />
             </PrivateRoute>
 
