@@ -12,7 +12,7 @@ const Purchase = () => {
     const [item, setItem] = useState({})
     const { id } = useParams()
     const history = useHistory()
-    const {user ,setStatus} = useAuth()
+    const { user, setStatus } = useAuth()
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/bike-collection/${id}`)
@@ -24,9 +24,9 @@ const Purchase = () => {
         history.push('/')
     }
 
-    const  addToOrder = ()=>{
+    const addToOrder = () => {
         item.email = user.email
-        delete(item._id)
+        delete (item._id)
         fetch(`${process.env.REACT_APP_BACKEND_URL}/bike-order`, {
             method: 'POST',
             headers: {
@@ -117,8 +117,8 @@ const Purchase = () => {
                                     <p className="tracking-tight text-base font-medium leading-4 text-gray-800">{item.price} Taka Only</p>
                                 </div>
                                 <div className="flex jusitfy-between flex-col lg:flex-row items-center mt-10 w-full  space-y-4 lg:space-y-0 lg:space-x-4 xl:space-x-8">
-                                    <div className="w-full" onClick={()=>{addToOrder()}}>
-                                        <button  className="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2  text-white w-full tracking-tight py-4 text-lg leading-4  hover:bg-black bg-gray-800 border border-gray-800">Add to cart</button>
+                                    <div className="w-full" onClick={() => { addToOrder() }}>
+                                        <button className="focus:outline-none focus:ring-gray-800 focus:ring-offset-2 focus:ring-2  text-white w-full tracking-tight py-4 text-lg leading-4  hover:bg-black bg-gray-800 border border-gray-800">Add to cart</button>
                                     </div>
                                 </div>
                             </div>

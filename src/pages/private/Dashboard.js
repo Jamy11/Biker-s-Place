@@ -25,6 +25,7 @@ import useAuth from '../../hooks/useAuth'
 import DashboardHome from './DashboardHome';
 import Pay from './Pay';
 import MyOrders from './MyOrders';
+import Review from './Review';
 
 
 const drawerWidth = 200;
@@ -51,7 +52,7 @@ const Dashboard = (props) => {
             <Box>
                 <Link to={`${url}/pay`}><Button color="inherit">Pay</Button></Link><br />
                 <Link to={`${url}/my-orders`}><Button color="inherit">My Orders</Button></Link><br />
-                <Link to={`${url}/makeadmin`}><Button color="inherit">Review</Button></Link><br />
+                <Link to={`${url}/review`}><Button color="inherit">Review</Button></Link><br />
                 <Button onClick={logout} color="inherit">Log Out</Button>
             </Box>}
 
@@ -147,6 +148,9 @@ const Dashboard = (props) => {
                     </Route>
                     <Route exact path={`${path}/my-orders`}>
                         <MyOrders user={user}/>
+                    </Route>
+                    <Route exact path={`${path}/review`}>
+                        <Review user={user}/>
                     </Route>
 
                 </Switch>
