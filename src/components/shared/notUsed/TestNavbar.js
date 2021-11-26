@@ -5,7 +5,7 @@ const TestNavbar = () => {
     console.log(show)
     return (
         <div>
-            <nav className="w-full bg-gray-100">
+            <nav className="w-full bg-gray-100 ">
                 <div className="container mx-auto px-6 flex items-center justify-between">
                     <svg aria-label="Home" className="cursor-pointer w-12 sm:w-auto" id="logo" enableBackground="new 0 0 300 300" height={74} viewBox="0 0 300 300" width={73} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                         <g>
