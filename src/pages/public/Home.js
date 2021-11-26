@@ -12,6 +12,7 @@ import { notify } from '../../helper/helperToast';
 import Footer from '../../components/shared/Footer';
 import Stat from '../../components/shared/Stat';
 import AboutUs from '../../components/shared/AboutUs';
+import TestNavbar from '../../components/shared/notUsed/TestNavbar';
 
 const Home = () => {
 
@@ -36,7 +37,8 @@ const Home = () => {
 
     return (
         <div>
-            <NewNavbar />
+            {/* <NewNavbar /> */}
+            <TestNavbar />
             <ImageSlider slides={SliderData} />
 
             <Container>
